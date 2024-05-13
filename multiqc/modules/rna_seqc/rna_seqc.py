@@ -4,7 +4,7 @@ import logging
 
 from multiqc import config
 from multiqc.base_module import BaseMultiqcModule, ModuleNoSamplesFound
-from multiqc.plots import bargraph, violin, heatmap, linegraph
+from multiqc.plots import bargraph, violin, heatmap, linegraph, table
 
 # Initialise the logger
 log = logging.getLogger(__name__)
@@ -358,5 +358,5 @@ class MultiqcModule(BaseMultiqcModule):
             anchor="rna_seqc_bam_stat",
             description=f"Number of reads ({config.read_count_desc}) falling into different categories.",
             helptext="Note that many of these statistics are only available from RNA-SeQC v2.x",
-            plot=violin.plot(self.rna_seqc_metrics, keys, pconfig),
+            plot=table.plot(self.rna_seqc_metrics, keys, pconfig),
         )
